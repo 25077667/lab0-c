@@ -145,6 +145,7 @@ bool q_remove_head(queue_t *q, char *sp, size_t bufsize)
     free(toBeDeleted->value);
     q->head = q->head->next;
     free(toBeDeleted);
+    q->size--;
     return true;
 }
 
