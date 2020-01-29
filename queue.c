@@ -172,6 +172,23 @@ void q_reverse(queue_t *q)
 {
     /* TODO: You need to write the code for this function */
     /* TODO: Remove the above comment when you are about to implement. */
+
+    if (q == NULL || q->size == 0)
+        return;
+
+    list_ele_t *current = q->head->next;
+    q->tail = q->head;
+    while (current) {
+        /*
+         * Use q->tail->next to be the cache.
+         * Because q->tail->next is not using, and it can reduce declare a
+         * variable.
+         */
+        q->tail->next = current->next;
+        current->next = q->head;
+        q->head = current;
+        current = q->tail->next;
+    }
 }
 
 /*
