@@ -23,7 +23,7 @@ typedef struct ELE {
 
 /* Queue structure */
 typedef struct {
-    list_ele_t *head; /* Linked list of elements */
+    list_ele_t *head, *tail; /* Linked list of elements */
     int size;
     /* TODO: You will need to add more fields to this structure
      *        to efficiently implement q_size and q_insert_tail.
@@ -44,6 +44,12 @@ queue_t *q_new();
  * No effect if q is NULL
  */
 void q_free(queue_t *q);
+
+/*
+ * Insert the first element in to the queue
+ * make the head and tail point to the new element
+ */
+bool insert_q_is_NULL(queue_t *q, char *s);
 
 /*
  * Attempt to insert element at head of queue.
