@@ -60,6 +60,10 @@ bool q_insert_head(queue_t *q, char *s)
     if (_string == NULL)
         return false;
     newh = malloc(sizeof(list_ele_t));
+    if (newh == NULL) {
+        free(_string);
+        return false;
+    }
     memcpy(_string, s, strlen(s));
     _string[_strlen - 1] = '\0';
 
@@ -96,6 +100,10 @@ bool q_insert_tail(queue_t *q, char *s)
     _string[_strlen - 1] = '\0';
 
     list_ele_t *newTail = malloc(sizeof(list_ele_t));
+    if (newTail == NULL) {
+        free(_string);
+        return false;
+    }
     newTail->value = _string;
     newTail->next = NULL;
 
@@ -120,11 +128,11 @@ bool q_remove_head(queue_t *q, char *sp, size_t bufsize)
 {
     /* TODO: You need to fix up this code. */
     /* TODO: Remove the above comment when you are about to implement. */
-    if (q == NULL || !q->size)
+    if (q == NULL || !q->head || sp == NULL)
         return false;
 
     list_ele_t *toBeDeleted = q->head;
-    memcpy(sp, toBeDeleted->value, bufsize - 2);
+    memcpy(sp, toBeDeleted->value, bufsize - 1);
     sp[bufsize - 1] = '\0';
     q->head = q->head->next;
     q->size--;
