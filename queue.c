@@ -25,11 +25,13 @@ queue_t *q_new()
 void q_free(queue_t *q)
 {
     /* TODO: How about freeing the list elements and the strings? */
+    if (q == NULL)
+        return;
     list_ele_t *current = q->head;
     while (current != NULL) {
         list_ele_t *toBeDeleted = current;
-        free(toBeDeleted->value);
         current = current->next;
+        free(toBeDeleted->value);
         free(toBeDeleted);
     }
 
@@ -158,6 +160,8 @@ int q_size(queue_t *q)
     /* TODO: You need to write the code for this function */
     /* Remember: It should operate in O(1) time */
     /* TODO: Remove the above comment when you are about to implement. */
+    if (q == NULL)
+        return 0;
     return q->size;
 }
 
