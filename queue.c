@@ -136,7 +136,7 @@ bool q_remove_head(queue_t *q, char *sp, size_t bufsize)
 {
     /* TODO: You need to fix up this code. */
     /* TODO: Remove the above comment when you are about to implement. */
-    if (q == NULL || q->size == 0)
+    if (q == NULL || !q->size)
         return false;
 
     list_ele_t *toBeDeleted = q->head;
@@ -173,7 +173,7 @@ void q_reverse(queue_t *q)
     /* TODO: You need to write the code for this function */
     /* TODO: Remove the above comment when you are about to implement. */
 
-    if (q == NULL || q->size == 0)
+    if (q == NULL || !q->size)
         return;
 
     list_ele_t *current = q->head->next;
@@ -191,6 +191,44 @@ void q_reverse(queue_t *q)
     }
 }
 
+list_ele_t *merge(list_ele_t *list1, list_ele_t *list2)
+{
+    if (!list1)
+        return list1;
+    if (!list2)
+        return list2;
+
+    if (strcmp(list1->value, list2->value) > 0) {  // increase
+        list1->next = merge(list1->next, list2);
+        return list1;
+    } else {
+        list2->next = merge(list1, list2->next);
+        return list2;
+    }
+}
+
+list_ele_t *mergeSort(list_ele_t *head)
+{
+    if (!head || !head->next)
+        return head;
+
+    // spilt into 2 lists, show will be the half element of list
+    list_ele_t *fast = head->next;
+    list_ele_t *slow = head;
+    while (!fast || !fast->next) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    fast = slow->next;
+    slow->next = NULL;
+
+    list_ele_t *list1 = mergeSort(head);
+    list_ele_t *list2 = mergeSort(fast);
+
+    merge(list1, list2);
+}
+
+
 /*
  * Sort elements of queue in ascending order
  * No effect if q is NULL or empty. In addition, if q has only one
@@ -200,4 +238,8 @@ void q_sort(queue_t *q)
 {
     /* TODO: You need to write the code for this function */
     /* TODO: Remove the above comment when you are about to implement. */
+    if (!q || !q->size)
+        return;
+
+    mergeSort(q->head);
 }
