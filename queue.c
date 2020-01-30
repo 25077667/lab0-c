@@ -207,7 +207,7 @@ list_ele_t *mergeSort(list_ele_t *head)
     if (!head || !head->next)
         return head;
 
-    // spilt into 2 lists, show will be the half element of list
+    // spilt into 2 lists, slow will be the half element of list
     list_ele_t *fast = head->next;
     list_ele_t *slow = head;
     while (fast && fast->next) {
