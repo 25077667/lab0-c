@@ -46,12 +46,6 @@ queue_t *q_new();
 void q_free(queue_t *q);
 
 /*
- * Insert the first element in to the queue
- * make the head and tail point to the new element
- */
-bool insert_q_is_NULL(queue_t *q, char *s);
-
-/*
  * Attempt to insert element at head of queue.
  * Return true if successful.
  * Return false if q is NULL or could not allocate space.
