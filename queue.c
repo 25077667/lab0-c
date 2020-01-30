@@ -142,12 +142,14 @@ bool q_remove_head(queue_t *q, char *sp, size_t bufsize)
         return false;
 
     list_ele_t *toBeDeleted = q->head;
-    memcpy(sp, toBeDeleted->value, bufsize - 1);
-    sp[bufsize] = '\0';
-    free(toBeDeleted->value);
+    memcpy(sp, toBeDeleted->value, bufsize - 2);
+    printf("Hello");
+    sp[bufsize - 1] = '\0';
     q->head = q->head->next;
-    free(toBeDeleted);
     q->size--;
+
+    free(toBeDeleted->value);
+    free(toBeDeleted);
     return true;
 }
 
