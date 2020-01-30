@@ -92,7 +92,7 @@ bool q_insert_tail(queue_t *q, char *s)
     char *_string = malloc(_strlen);
     if (_string == NULL)
         return false;
-    memcpy(_string, s, sizeof(strlen(s)));
+    memcpy(_string, s, strlen(s));
     _string[_strlen - 1] = '\0';
 
     list_ele_t *newTail = malloc(sizeof(list_ele_t));
