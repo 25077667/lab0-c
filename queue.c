@@ -188,6 +188,28 @@ void q_reverse(queue_t *q)
 
 list_ele_t *merge(list_ele_t *list1, list_ele_t *list2)
 {
+    /*list_ele_t *tmp = malloc(sizeof(list_ele_t));
+    list_ele_t *tmp_head = tmp;
+    while (list1 && list2) {
+        if (strcmp(list1->value, list2->value) < 0) {
+            tmp->next = list1;
+            tmp = tmp->next;
+            list1 = list1->next;
+        } else {
+            tmp->next = list2;
+            tmp = tmp->next;
+            list2 = list2->next;
+        }
+    }
+
+    if (list1)
+        tmp->next = list1;
+    if (list2)
+        tmp->next = list2;
+
+    list_ele_t *result = tmp_head->next;
+    free(tmp_head);
+    return result;*/
     if (!list1)
         return list2;
     if (!list2)
