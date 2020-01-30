@@ -181,11 +181,11 @@ void q_reverse(queue_t *q)
 list_ele_t *merge(list_ele_t *list1, list_ele_t *list2)
 {
     if (!list1)
-        return list1;
-    if (!list2)
         return list2;
+    if (!list2)
+        return list1;
 
-    if (strcmp(list1->value, list2->value) > 0) {  // increase
+    if (strcmp(list1->value, list2->value) < 0) {  // increase
         list1->next = merge(list1->next, list2);
         return list1;
     } else {
@@ -202,7 +202,7 @@ list_ele_t *mergeSort(list_ele_t *head)
     // spilt into 2 lists, show will be the half element of list
     list_ele_t *fast = head->next;
     list_ele_t *slow = head;
-    while (fast != NULL && fast->next != NULL) {
+    while (fast && fast->next) {
         slow = slow->next;
         fast = fast->next->next;
     }
@@ -225,8 +225,13 @@ void q_sort(queue_t *q)
 {
     /* TODO: You need to write the code for this function */
     /* TODO: Remove the above comment when you are about to implement. */
-    if (!q || !q->size)
+    if (!q || q->size < 2)
         return;
 
     q->head = mergeSort(q->head);
+    list_ele_t *last = q->head;
+    while (last->next) {
+        last = last->next;
+    }
+    q->tail = last;
 }
