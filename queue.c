@@ -215,7 +215,7 @@ list_ele_t *mergeSort(list_ele_t *head)
     // spilt into 2 lists, show will be the half element of list
     list_ele_t *fast = head->next;
     list_ele_t *slow = head;
-    while (!fast || !fast->next) {
+    while (fast != NULL && fast->next != NULL) {
         slow = slow->next;
         fast = fast->next->next;
     }
@@ -225,7 +225,7 @@ list_ele_t *mergeSort(list_ele_t *head)
     list_ele_t *list1 = mergeSort(head);
     list_ele_t *list2 = mergeSort(fast);
 
-    merge(list1, list2);
+    return merge(list1, list2);
 }
 
 
@@ -241,5 +241,5 @@ void q_sort(queue_t *q)
     if (!q || !q->size)
         return;
 
-    mergeSort(q->head);
+    q->head = mergeSort(q->head);
 }
