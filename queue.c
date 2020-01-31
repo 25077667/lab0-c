@@ -13,7 +13,6 @@
 queue_t *q_new()
 {
     queue_t *q = malloc(sizeof(queue_t));
-    /* TODO: What if malloc returned NULL? */
     if (q == NULL)
         return NULL;  // bad alloc
     q->head = NULL;
@@ -25,7 +24,6 @@ queue_t *q_new()
 /* Free all storage used by queue */
 void q_free(queue_t *q)
 {
-    /* TODO: How about freeing the list elements and the strings? */
     if (q == NULL)
         return;
     list_ele_t *current = q->head;
@@ -36,7 +34,6 @@ void q_free(queue_t *q)
         free(toBeDeleted);
     }
 
-    /* Free queue structure */
     free(q);
 }
 
@@ -50,12 +47,9 @@ void q_free(queue_t *q)
 bool q_insert_head(queue_t *q, char *s)
 {
     list_ele_t *newh;
-    /* TODO: What should you do if the q is NULL? */
     if (!q)
         return false;
 
-    /* Don't forget to allocate space for the string and copy it */
-    /* What if either call to malloc returns NULL? */
     size_t _strlen = strlen(s) + 1;
     char *_string = malloc(_strlen);
     if (_string == NULL)
@@ -87,9 +81,6 @@ bool q_insert_head(queue_t *q, char *s)
  */
 bool q_insert_tail(queue_t *q, char *s)
 {
-    /* TODO: You need to write the complete code for this function */
-    /* Remember: It should operate in O(1) time */
-    /* TODO: Remove the above comment when you are about to implement. */
     if (!q)
         return false;
 
@@ -127,8 +118,6 @@ bool q_insert_tail(queue_t *q, char *s)
  */
 bool q_remove_head(queue_t *q, char *sp, size_t bufsize)
 {
-    /* TODO: You need to fix up this code. */
-    /* TODO: Remove the above comment when you are about to implement. */
     if (q == NULL || !q->head || sp == NULL)
         return false;
 
@@ -149,9 +138,6 @@ bool q_remove_head(queue_t *q, char *sp, size_t bufsize)
  */
 int q_size(queue_t *q)
 {
-    /* TODO: You need to write the code for this function */
-    /* Remember: It should operate in O(1) time */
-    /* TODO: Remove the above comment when you are about to implement. */
     if (q == NULL)
         return 0;
     return q->size;
@@ -166,10 +152,7 @@ int q_size(queue_t *q)
  */
 void q_reverse(queue_t *q)
 {
-    /* TODO: You need to write the code for this function */
-    /* TODO: Remove the above comment when you are about to implement. */
-
-    if (q == NULL || !q->size || q->head == q->tail)
+    if (q == NULL || !q->size)
         return;
 
     list_ele_t *current = q->head->next;
@@ -189,40 +172,40 @@ void q_reverse(queue_t *q)
 
 list_ele_t *merge(list_ele_t *list1, list_ele_t *list2)
 {
-    /*list_ele_t *result, *current;
-    result->next = current;
-    while(list1 && list2){
-        if (strcmp(list1->value, list2->value) < 0){
-            current->next =
-        }
-    }*/
-    const rlim_t kStackSize = 64L * 1024L * 1024L;  // min stack size = 64 Mb
-    struct rlimit rl;
-    int result;
-
-    result = getrlimit(RLIMIT_STACK, &rl);
-    if (result == 0) {
-        if (rl.rlim_cur < kStackSize) {
-            rl.rlim_cur = kStackSize;
-            result = setrlimit(RLIMIT_STACK, &rl);
-            if (result != 0) {
-                fprintf(stderr, "setrlimit returned result = %d\n", result);
-            }
-        }
-    }
-
+    list_ele_t *result, *current;
     if (!list1)
         return list2;
     if (!list2)
         return list1;
 
-    if (strcmp(list1->value, list2->value) < 0) {  // increase
-        list1->next = merge(list1->next, list2);
-        return list1;
+    // init result and current
+    if (strcmp(list1->value, list2->value) < 0) {
+        result = list1;
+        list1 = list1->next;
     } else {
-        list2->next = merge(list1, list2->next);
-        return list2;
+        result = list2;
+        list2 = list2->next;
     }
+    current = result;
+
+    // merge value of list nodes until one's end
+    while (list1 && list2) {
+        if (strcmp(list1->value, list2->value) < 0) {
+            current->next = list1;
+            list1 = list1->next;
+        } else {
+            current->next = list2;
+            list2 = list2->next;
+        }
+        current = current->next;
+    }
+
+    if (list1)
+        current->next = list1;
+    if (list2)
+        current->next = list2;
+
+    return result;
 }
 
 list_ele_t *mergeSort(list_ele_t *head)
@@ -254,9 +237,6 @@ list_ele_t *mergeSort(list_ele_t *head)
  */
 void q_sort(queue_t *q)
 {
-    /* TODO: You need to write the code for this function */
-    /* TODO: Remove the above comment when you are about to implement.
-     */
     if (!q || q->size < 2)
         return;
 
