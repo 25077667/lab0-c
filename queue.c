@@ -236,8 +236,6 @@ list_ele_t *mergeSort(list_ele_t *head)
  */
 void q_sort(queue_t *q)
 {
-    /* TODO: You need to write the code for this function */
-    /* TODO: Remove the above comment when you are about to implement. */
     if (!q || q->size < 2)
         return;
 
