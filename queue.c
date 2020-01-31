@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/resource.h>
 
 #include "harness.h"
 #include "queue.h"
@@ -168,7 +169,7 @@ void q_reverse(queue_t *q)
     /* TODO: You need to write the code for this function */
     /* TODO: Remove the above comment when you are about to implement. */
 
-    if (q == NULL || !q->size)
+    if (q == NULL || !q->size || q->head == q->tail)
         return;
 
     list_ele_t *current = q->head->next;
@@ -188,6 +189,28 @@ void q_reverse(queue_t *q)
 
 list_ele_t *merge(list_ele_t *list1, list_ele_t *list2)
 {
+    /*list_ele_t *result, *current;
+    result->next = current;
+    while(list1 && list2){
+        if (strcmp(list1->value, list2->value) < 0){
+            current->next =
+        }
+    }*/
+    const rlim_t kStackSize = 64L * 1024L * 1024L;  // min stack size = 64 Mb
+    struct rlimit rl;
+    int result;
+
+    result = getrlimit(RLIMIT_STACK, &rl);
+    if (result == 0) {
+        if (rl.rlim_cur < kStackSize) {
+            rl.rlim_cur = kStackSize;
+            result = setrlimit(RLIMIT_STACK, &rl);
+            if (result != 0) {
+                fprintf(stderr, "setrlimit returned result = %d\n", result);
+            }
+        }
+    }
+
     if (!list1)
         return list2;
     if (!list2)
@@ -232,7 +255,8 @@ list_ele_t *mergeSort(list_ele_t *head)
 void q_sort(queue_t *q)
 {
     /* TODO: You need to write the code for this function */
-    /* TODO: Remove the above comment when you are about to implement. */
+    /* TODO: Remove the above comment when you are about to implement.
+     */
     if (!q || q->size < 2)
         return;
 
