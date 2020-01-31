@@ -188,7 +188,41 @@ void q_reverse(queue_t *q)
 
 list_ele_t *merge(list_ele_t *list1, list_ele_t *list2)
 {
+    list_ele_t *result, *current;
     if (!list1)
+        return list2;
+    if (!list2)
+        return list1;
+
+    // init result and current
+    if (strcmp(list1->value, list2->value) < 0) {
+        result = list1;
+        list1 = list1->next;
+    } else {
+        result = list2;
+        list2 = list2->next;
+    }
+    current = result;
+
+    // merge value of list nodes until one's end
+    while (list1 && list2) {
+        if (strcmp(list1->value, list2->value) < 0) {
+            current->next = list1;
+            list1 = list1->next;
+        } else {
+            current->next = list2;
+            list2 = list2->next;
+        }
+        current = current->next;
+    }
+
+    if (list1)
+        current->next = list1;
+    if (list2)
+        current->next = list2;
+
+    return result;
+    /*if (!list1)
         return list2;
     if (!list2)
         return list1;
@@ -199,7 +233,7 @@ list_ele_t *merge(list_ele_t *list1, list_ele_t *list2)
     } else {
         list2->next = merge(list1, list2->next);
         return list2;
-    }
+    }*/
 }
 
 list_ele_t *mergeSort(list_ele_t *head)
