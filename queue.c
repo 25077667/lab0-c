@@ -83,20 +83,14 @@ bool q_insert_tail(queue_t *q, char *s)
     if (!q)
         return false;
 
-    size_t _strlen = strlen(s) + 1;
-    char *_string = malloc(_strlen);
-    if (_string == NULL)
-        return false;
-    memcpy(_string, s, strlen(s));
-    _string[_strlen - 1] = '\0';
-
     list_ele_t *newTail = malloc(sizeof(list_ele_t));
-    if (newTail == NULL) {
-        free(_string);
+    if (!newTail)
+        return false;
+    memset(newTail, 0, sizeof(list_ele_t));
+    if (!(newTail->value = strdup(s))) {
+        free(newTail);
         return false;
     }
-    newTail->value = _string;
-    newTail->next = NULL;
 
     if (q->tail != NULL)
         q->tail->next = newTail;
@@ -123,7 +117,6 @@ bool q_remove_head(queue_t *q, char *sp, size_t bufsize)
     list_ele_t *toBeDeleted = q->head;
     memset(sp, 0, bufsize);
     strncpy(sp, toBeDeleted->value, bufsize - 1);
-    sp[bufsize - 1] = '\0';
     q->head = q->head->next;
     q->size--;
 
