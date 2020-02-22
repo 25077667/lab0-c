@@ -14,9 +14,7 @@ queue_t *q_new()
     queue_t *q = malloc(sizeof(queue_t));
     if (q == NULL)
         return NULL;  // bad alloc
-    q->head = NULL;
-    q->tail = NULL;
-    q->size = 0;
+    memset(q, 0, sizeof(queue_t));
     return q;
 }
 
