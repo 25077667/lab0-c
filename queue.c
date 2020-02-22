@@ -45,27 +45,21 @@ void q_free(queue_t *q)
  */
 bool q_insert_head(queue_t *q, char *s)
 {
-    list_ele_t *newh;
     if (!q)
         return false;
 
-    size_t _strlen = strlen(s) + 1;
-    char *_string = malloc(_strlen);
-    if (_string == NULL)
+    list_ele_t *newh = malloc(sizeof(list_ele_t));
+    if (!newh)
         return false;
-    newh = malloc(sizeof(list_ele_t));
-    if (newh == NULL) {
-        free(_string);
+    memset(newh, 0, sizeof(list_ele_t));
+    if (!(newh->value = strdup(s))) {
+        free(newh);
         return false;
     }
-    memcpy(_string, s, strlen(s));
-    _string[_strlen - 1] = '\0';
 
-    newh->value = _string;
     newh->next = q->head;
     q->head = newh;
-
-    if (q->tail == NULL)
+    if (!q->tail)
         q->tail = newh;
     q->size++;
     return true;
@@ -92,10 +86,10 @@ bool q_insert_tail(queue_t *q, char *s)
         return false;
     }
 
-    if (q->tail != NULL)
+    if (q->tail)
         q->tail->next = newTail;
     q->tail = newTail;
-    if (q->head == NULL)
+    if (!q->head)
         q->head = newTail;
     q->size++;
     return true;
