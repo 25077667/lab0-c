@@ -1,0 +1,372 @@
+# Explicitly disable sanitizer(s)
+make clean SANITIZER=0 qtest
+make[1]: Entering directory '/mnt/c/Users/yang/git/jserv/linux/lab0-c'
+rm -f qtest.o report.o console.o harness.o queue.o random.o dudect/constant.o dudect/fixture.o dudect/ttest.o .qtest.o.d .report.o.d .console.o.d .harness.o.d .queue.o.d .random.o.d .dudect/constant.o.d .dudect/fixture.o.d .dudect/ttest.o.d *~ qtest /tmp/qtest.*
+rm -rf .dudect
+rm -rf *.dSYM
+(cd traces; rm -f *~)
+  CC    qtest.o
+  CC    report.o
+  CC    console.o
+  CC    harness.o
+  CC    queue.o
+  CC    random.o
+  CC    dudect/constant.o
+  CC    dudect/fixture.o
+  CC    dudect/ttest.o
+  LD    qtest
+make[1]: Leaving directory '/mnt/c/Users/yang/git/jserv/linux/lab0-c'
+cp qtest /tmp/qtest.QavHet
+chmod u+x /tmp/qtest.QavHet
+sed -i "s/alarm/isnan/g" /tmp/qtest.QavHet
+scripts/driver.py -p /tmp/qtest.QavHet --valgrind
+---     Trace           Points
++++ TESTING trace trace-01-ops:
+==2358== ./.valgrindrc was not read as it is either not a regular file,
+==2358==     or is world writeable, or is not owned by the current user.
+==2358== Memcheck, a memory error detector
+==2358== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2358== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==2358== Command: /tmp/qtest.QavHet -v 1 -f ./traces/trace-01-ops.cmd
+==2358==
+==2358== error calling PR_SET_PTRACER, vgdb might block
+# Test of insert_head and remove_head
+==2358== 
+==2358== HEAP SUMMARY:
+==2358==     in use at exit: 0 bytes in 0 blocks
+==2358==   total heap usage: 86 allocs, 86 frees, 23,202 bytes allocated
+==2358==
+==2358== All heap blocks were freed -- no leaks are possible
+==2358==
+==2358== For counts of detected and suppressed errors, rerun with: -v
+==2358== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+---     trace-01-ops    6/6
++++ TESTING trace trace-02-ops:
+==2359== ./.valgrindrc was not read as it is either not a regular file,
+==2359==     or is world writeable, or is not owned by the current user.
+==2359== Memcheck, a memory error detector
+==2359== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2359== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==2359== Command: /tmp/qtest.QavHet -v 1 -f ./traces/trace-02-ops.cmd
+==2359==
+==2359== error calling PR_SET_PTRACER, vgdb might block
+# Test of insert_head, insert_tail, and remove_head
+==2359== 
+==2359== HEAP SUMMARY:
+==2359==     in use at exit: 0 bytes in 0 blocks
+==2359==   total heap usage: 121 allocs, 121 frees, 32,984 bytes allocated
+==2359==
+==2359== All heap blocks were freed -- no leaks are possible
+==2359==
+==2359== For counts of detected and suppressed errors, rerun with: -v
+==2359== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+---     trace-02-ops    6/6
++++ TESTING trace trace-03-ops:
+==2360== ./.valgrindrc was not read as it is either not a regular file,
+==2360==     or is world writeable, or is not owned by the current user.
+==2360== Memcheck, a memory error detector
+==2360== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2360== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==2360== Command: /tmp/qtest.QavHet -v 1 -f ./traces/trace-03-ops.cmd
+==2360==
+==2360== error calling PR_SET_PTRACER, vgdb might block
+# Test of insert_head, insert_tail, reverse, and remove_head
+==2360== 
+==2360== HEAP SUMMARY:
+==2360==     in use at exit: 0 bytes in 0 blocks
+==2360==   total heap usage: 158 allocs, 158 frees, 39,627 bytes allocated
+==2360==
+==2360== All heap blocks were freed -- no leaks are possible
+==2360==
+==2360== For counts of detected and suppressed errors, rerun with: -v
+==2360== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+---     trace-03-ops    6/6
++++ TESTING trace trace-04-ops:
+==2361== ./.valgrindrc was not read as it is either not a regular file,
+==2361==     or is world writeable, or is not owned by the current user.
+==2361== Memcheck, a memory error detector
+==2361== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2361== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==2361== Command: /tmp/qtest.QavHet -v 1 -f ./traces/trace-04-ops.cmd
+==2361==
+==2361== error calling PR_SET_PTRACER, vgdb might block
+# Test of insert_head, insert_tail, size, and sort
+==2361== 
+==2361== HEAP SUMMARY:
+==2361==     in use at exit: 0 bytes in 0 blocks
+==2361==   total heap usage: 121 allocs, 121 frees, 26,780 bytes allocated
+==2361==
+==2361== All heap blocks were freed -- no leaks are possible
+==2361==
+==2361== For counts of detected and suppressed errors, rerun with: -v
+==2361== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+---     trace-04-ops    6/6
++++ TESTING trace trace-05-ops:
+==2362== ./.valgrindrc was not read as it is either not a regular file,
+==2362==     or is world writeable, or is not owned by the current user.
+==2362== Memcheck, a memory error detector
+==2362== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2362== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==2362== Command: /tmp/qtest.QavHet -v 1 -f ./traces/trace-05-ops.cmd
+==2362==
+==2362== error calling PR_SET_PTRACER, vgdb might block
+# Test of insert_head, insert_tail, remove_head, reverse, size, and sort
+==2362== 
+==2362== HEAP SUMMARY:
+==2362==     in use at exit: 0 bytes in 0 blocks
+==2362==   total heap usage: 148 allocs, 148 frees, 33,214 bytes allocated
+==2362==
+==2362== All heap blocks were freed -- no leaks are possible
+==2362==
+==2362== For counts of detected and suppressed errors, rerun with: -v
+==2362== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+---     trace-05-ops    5/5
++++ TESTING trace trace-06-string:
+==2363== ./.valgrindrc was not read as it is either not a regular file,
+==2363==     or is world writeable, or is not owned by the current user.
+==2363== Memcheck, a memory error detector
+==2363== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2363== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==2363== Command: /tmp/qtest.QavHet -v 1 -f ./traces/trace-06-string.cmd
+==2363==
+==2363== error calling PR_SET_PTRACER, vgdb might block
+# Test of truncated strings
+==2363== 
+==2363== HEAP SUMMARY:
+==2363==     in use at exit: 0 bytes in 0 blocks
+==2363==   total heap usage: 196 allocs, 196 frees, 31,301 bytes allocated
+==2363==
+==2363== All heap blocks were freed -- no leaks are possible
+==2363==
+==2363== For counts of detected and suppressed errors, rerun with: -v
+==2363== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+---     trace-06-string 6/6
++++ TESTING trace trace-07-robust:
+==2364== ./.valgrindrc was not read as it is either not a regular file,
+==2364==     or is world writeable, or is not owned by the current user.
+==2364== Memcheck, a memory error detector
+==2364== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2364== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==2364== Command: /tmp/qtest.QavHet -v 1 -f ./traces/trace-07-robust.cmd
+==2364==
+==2364== error calling PR_SET_PTRACER, vgdb might block
+# Test operations on NULL queue
+==2364== 
+==2364== HEAP SUMMARY:
+==2364==     in use at exit: 0 bytes in 0 blocks
+==2364==   total heap usage: 69 allocs, 69 frees, 16,604 bytes allocated
+==2364==
+==2364== All heap blocks were freed -- no leaks are possible
+==2364==
+==2364== For counts of detected and suppressed errors, rerun with: -v
+==2364== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+---     trace-07-robust 6/6
++++ TESTING trace trace-08-robust:
+==2365== ./.valgrindrc was not read as it is either not a regular file,
+==2365==     or is world writeable, or is not owned by the current user.
+==2365== Memcheck, a memory error detector
+==2365== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2365== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==2365== Command: /tmp/qtest.QavHet -v 1 -f ./traces/trace-08-robust.cmd
+==2365==
+==2365== error calling PR_SET_PTRACER, vgdb might block
+# Test operations on empty queue
+==2365== 
+==2365== HEAP SUMMARY:
+==2365==     in use at exit: 0 bytes in 0 blocks
+==2365==   total heap usage: 62 allocs, 62 frees, 16,596 bytes allocated
+==2365==
+==2365== All heap blocks were freed -- no leaks are possible
+==2365==
+==2365== For counts of detected and suppressed errors, rerun with: -v
+==2365== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+---     trace-08-robust 6/6
++++ TESTING trace trace-09-robust:
+==2366== ./.valgrindrc was not read as it is either not a regular file,
+==2366==     or is world writeable, or is not owned by the current user.
+==2366== Memcheck, a memory error detector
+==2366== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2366== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==2366== Command: /tmp/qtest.QavHet -v 1 -f ./traces/trace-09-robust.cmd
+==2366==
+==2366== error calling PR_SET_PTRACER, vgdb might block
+# Test remove_head with NULL argument
+==2366== 
+==2366== HEAP SUMMARY:
+==2366==     in use at exit: 0 bytes in 0 blocks
+==2366==   total heap usage: 59 allocs, 59 frees, 13,607 bytes allocated
+==2366==
+==2366== All heap blocks were freed -- no leaks are possible
+==2366==
+==2366== For counts of detected and suppressed errors, rerun with: -v
+==2366== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+---     trace-09-robust 6/6
++++ TESTING trace trace-10-malloc:
+==2367== ./.valgrindrc was not read as it is either not a regular file,
+==2367==     or is world writeable, or is not owned by the current user.
+==2367== Memcheck, a memory error detector
+==2367== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2367== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==2367== Command: /tmp/qtest.QavHet -v 1 -f ./traces/trace-10-malloc.cmd
+==2367==
+==2367== error calling PR_SET_PTRACER, vgdb might block
+# Test of malloc failure on new
+==2367== 
+==2367== HEAP SUMMARY:
+==2367==     in use at exit: 0 bytes in 0 blocks
+==2367==   total heap usage: 72 allocs, 72 frees, 13,797 bytes allocated
+==2367==
+==2367== All heap blocks were freed -- no leaks are possible
+==2367==
+==2367== For counts of detected and suppressed errors, rerun with: -v
+==2367== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+---     trace-10-malloc 6/6
++++ TESTING trace trace-11-malloc:
+==2368== ./.valgrindrc was not read as it is either not a regular file,
+==2368==     or is world writeable, or is not owned by the current user.
+==2368== Memcheck, a memory error detector
+==2368== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2368== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==2368== Command: /tmp/qtest.QavHet -v 1 -f ./traces/trace-11-malloc.cmd
+==2368==
+==2368== error calling PR_SET_PTRACER, vgdb might block
+# Test of malloc failure on insert_head
+==2368== 
+==2368== HEAP SUMMARY:
+==2368==     in use at exit: 0 bytes in 0 blocks
+==2368==   total heap usage: 91 allocs, 91 frees, 14,948 bytes allocated
+==2368==
+==2368== All heap blocks were freed -- no leaks are possible
+==2368==
+==2368== For counts of detected and suppressed errors, rerun with: -v
+==2368== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+---     trace-11-malloc 6/6
++++ TESTING trace trace-12-malloc:
+==2369== ./.valgrindrc was not read as it is either not a regular file,
+==2369==     or is world writeable, or is not owned by the current user.
+==2369== Memcheck, a memory error detector
+==2369== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2369== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==2369== Command: /tmp/qtest.QavHet -v 1 -f ./traces/trace-12-malloc.cmd
+==2369==
+==2369== error calling PR_SET_PTRACER, vgdb might block
+# Test of malloc failure on insert_tail
+==2369== 
+==2369== HEAP SUMMARY:
+==2369==     in use at exit: 0 bytes in 0 blocks
+==2369==   total heap usage: 140 allocs, 140 frees, 17,256 bytes allocated
+==2369==
+==2369== All heap blocks were freed -- no leaks are possible
+==2369==
+==2369== For counts of detected and suppressed errors, rerun with: -v
+==2369== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+---     trace-12-malloc 6/6
++++ TESTING trace trace-13-perf:
+==2370== ./.valgrindrc was not read as it is either not a regular file,
+==2370==     or is world writeable, or is not owned by the current user.
+==2370== Memcheck, a memory error detector
+==2370== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2370== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==2370== Command: /tmp/qtest.QavHet -v 1 -f ./traces/trace-13-perf.cmd
+==2370==
+==2370== error calling PR_SET_PTRACER, vgdb might block
+# Test performance of insert_tail
+==2370== 
+==2370== HEAP SUMMARY:
+==2370==     in use at exit: 0 bytes in 0 blocks
+==2370==   total heap usage: 2,004,065 allocs, 2,004,065 frees, 104,219,634 bytes allocated
+==2370==
+==2370== All heap blocks were freed -- no leaks are possible
+==2370==
+==2370== For counts of detected and suppressed errors, rerun with: -v
+==2370== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+---     trace-13-perf   6/6
++++ TESTING trace trace-14-perf:
+==2371== ./.valgrindrc was not read as it is either not a regular file,
+==2371==     or is world writeable, or is not owned by the current user.
+==2371== Memcheck, a memory error detector
+==2371== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2371== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==2371== Command: /tmp/qtest.QavHet -v 1 -f ./traces/trace-14-perf.cmd
+==2371==
+==2371== error calling PR_SET_PTRACER, vgdb might block
+# Test performance of size
+==2371== 
+==2371== HEAP SUMMARY:
+==2371==     in use at exit: 0 bytes in 0 blocks
+==2371==   total heap usage: 2,000,058 allocs, 2,000,058 frees, 104,013,524 bytes allocated
+==2371==
+==2371== All heap blocks were freed -- no leaks are possible
+==2371==
+==2371== For counts of detected and suppressed errors, rerun with: -v
+==2371== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+---     trace-14-perf   6/6
++++ TESTING trace trace-15-perf:
+==2372== ./.valgrindrc was not read as it is either not a regular file,
+==2372==     or is world writeable, or is not owned by the current user.
+==2372== Memcheck, a memory error detector
+==2372== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2372== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==2372== Command: /tmp/qtest.QavHet -v 1 -f ./traces/trace-15-perf.cmd
+==2372==
+==2372== error calling PR_SET_PTRACER, vgdb might block
+# Test performance of insert_tail, size, reverse, and sort
+==2372== 
+==2372== HEAP SUMMARY:
+==2372==     in use at exit: 0 bytes in 0 blocks
+==2372==   total heap usage: 4,000,077 allocs, 4,000,077 frees, 207,013,762 bytes allocated
+==2372== 
+==2372== All heap blocks were freed -- no leaks are possible
+==2372== 
+==2372== For counts of detected and suppressed errors, rerun with: -v
+==2372== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+---     trace-15-perf   6/6
++++ TESTING trace trace-16-perf:
+==2373== ./.valgrindrc was not read as it is either not a regular file, 
+==2373==     or is world writeable, or is not owned by the current user.
+==2373== Memcheck, a memory error detector
+==2373== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.   
+==2373== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==2373== Command: /tmp/qtest.QavHet -v 1 -f ./traces/trace-16-perf.cmd     
+==2373== 
+==2373== error calling PR_SET_PTRACER, vgdb might block
+# Test performance of sort with random and descending orders
+# 10000: all correct sorting algorithms are expected pass   
+# 50000: sorting algorithms with O(n^2) time complexity are expected failed 
+# 100000: sorting algorithms with O(nlogn) time complexity are expected pass
+==2373== 
+==2373== HEAP SUMMARY:
+==2373==     in use at exit: 0 bytes in 0 blocks
+==2373==   total heap usage: 320,148 allocs, 320,148 frees, 16,655,638 bytes allocated
+==2373== 
+==2373== All heap blocks were freed -- no leaks are possible
+==2373== 
+==2373== For counts of detected and suppressed errors, rerun with: -v
+==2373== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+---     trace-16-perf   6/6
++++ TESTING trace trace-17-complexity:
+==2374== ./.valgrindrc was not read as it is either not a regular file,
+==2374==     or is world writeable, or is not owned by the current user.
+==2374== Memcheck, a memory error detector
+==2374== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2374== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==2374== Command: /tmp/qtest.QavHet -v 1 -f ./traces/trace-17-complexity.cmd
+==2374==
+==2374== error calling PR_SET_PTRACER, vgdb might block
+# Test if q_insert_tail and q_size is constant time complexity
+Probably constant time
+Probably constant time
+==2374== 
+==2374== HEAP SUMMARY:
+==2374==     in use at exit: 0 bytes in 0 blocks
+==2374==   total heap usage: 97,483,756 allocs, 97,483,756 frees, 4,955,825,139 bytes allocated
+==2374==
+==2374== All heap blocks were freed -- no leaks are possible
+==2374==
+==2374== For counts of detected and suppressed errors, rerun with: -v
+==2374== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+---     trace-17-complexity     5/5
+---     TOTAL           100/100
+
+Test with specific case by running command:
+scripts/driver.py -p /tmp/qtest.QavHet --valgrind -t <tid>

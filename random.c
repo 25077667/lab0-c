@@ -36,7 +36,7 @@ void randombytes(uint8_t *x, size_t how_much)
         x += i;
         xlen -= i;
     }
-    close(fd);
+    // close(fd);
 }
 
 uint8_t randombit(void)
