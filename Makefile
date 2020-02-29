@@ -26,7 +26,8 @@ $(GIT_HOOKS):
 	@echo
 
 OBJS := qtest.o report.o console.o harness.o queue.o \
-        random.o dudect/constant.o dudect/fixture.o dudect/ttest.o
+        random.o dudect/constant.o dudect/fixture.o dudect/ttest.o \
+		strnatcmp.o
 deps := $(OBJS:%.o=.%.o.d)
 
 qtest: $(OBJS)
