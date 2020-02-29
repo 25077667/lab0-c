@@ -1,0 +1,43 @@
+scc@scc-lab:lab0-c$ ./qtest                                                   │Samples: 5K of event 'cycles:ppp', Event count (approx.): 2550297054  
+pid: 27001                                                                    │Overhead  Shared Objec  Symbol
+cmd> source traces/trace-15-perf.cmd                                          │  28.64%  qtest         [.] strnatcasecmp
+cmd> source traces/trace-15-perf.cmd                                          │  20.87%  qtest         [.] mergeSort
+cmd> # Test performance of insert_tail, size, reverse, and sort               │  12.11%  qtest         [.] show_queue
+cmd> option fail 0                                                            │   6.43%  libc-2.27.so  [.] _int_malloc
+cmd> option malloc 0                                                          │   3.21%  qtest         [.] test_malloc
+cmd> new                                                                      │   3.05%  qtest         [.] q_reverse
+q = []                                                                        │   2.80%  qtest         [.] test_strdup
+cmd> ih dolphin 1000000                                                       │   2.78%  qtest         [.] merge
+q = [dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin d│   2.39%  qtest         [.] __ctype_toupper_loc@plt
+olphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin│   2.24%  libc-2.27.so  [.] __ctype_toupper_loc
+ dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolph│   2.19%  qtest         [.] q_sort
+in dolphin ... ]                                                              │   1.47%  libc-2.27.so  [.] __random
+cmd> it gerbil 1000000                                                        │   1.32%  libc-2.27.so  [.] malloc
+q = [dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin d│   1.06%  libc-2.27.so  [.] __strcasecmp_l_avx
+olphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin│   0.96%  [kernel]      [k] prepare_exit_to_usermode
+ dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolph│   0.72%  libc-2.27.so  [.] __random_r
+in dolphin ... ]                                                              │   0.70%  libc-2.27.so  [.] __memset_avx2_unaligned_erms
+cmd> size 1000                                                                │   0.63%  [kernel]      [k] clear_page_erms
+Queue size = 2000000                                                          │   0.48%  [kernel]      [k] get_page_from_freelist
+q = [dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin d│   0.41%  [kernel]      [k] native_irq_return_iret
+olphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin│   0.40%  libc-2.27.so  [.] __ctype_b_loc
+ dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolph│   0.38%  qtest         [.] do_insert_head
+in dolphin ... ]                                                              │   0.35%  [kernel]      [k] error_entry
+cmd> reverse                                                                  │   0.34%  qtest         [.] __ctype_b_loc@plt
+q = [gerbil gerbil gerbil gerbil gerbil gerbil gerbil gerbil gerbil gerbil ger│   0.34%  qtest         [.] do_sort
+bil gerbil gerbil gerbil gerbil gerbil gerbil gerbil gerbil gerbil gerbil gerb│   0.27%  qtest         [.] q_insert_head
+il gerbil gerbil gerbil gerbil gerbil gerbil gerbil gerbil ... ]              │   0.24%  qtest         [.] do_insert_tail
+cmd> sort                                                                     │   0.22%  [kernel]      [k] sync_regs
+q = [dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin d│   0.22%  [kernel]      [k] swapgs_restore_regs_and_return_to_usermode
+olphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin│   0.20%  qtest         [.] error_check
+ dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolph│   0.20%  qtest         [.] q_insert_tail
+in dolphin ... ]                                                              │   0.18%  [kernel]      [k] try_charge
+cmd> size 1000                                                                │   0.17%  libc-2.27.so  [.] __memmove_avx_unaligned_erms
+Queue size = 2000000                                                          │   0.16%  [kernel]      [k] __handle_mm_fault
+q = [dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin d│   0.14%  [kernel]      [k] __pagevec_lru_add_fn
+olphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin│   0.10%  qtest         [.] memset@plt
+ dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolphin dolph│   0.10%  qtest         [.] memcpy@plt
+in dolphin ... ]                                                              │   0.08%  qtest         [.] malloc@plt
+cmd>                                                                          │   0.08%  qtest         [.] random@plt
+cmd>                                                                          │   0.07%  [kernel]      [k] _raw_spin_lock
+                                                                              │   0.07%  [kernel]      [k] __mod_node_page_state
