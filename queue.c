@@ -163,7 +163,7 @@ list_ele_t *merge(list_ele_t *list1, list_ele_t *list2)
         return list1;
 
     // init result and current
-    if (strnatcasecmp(list1->value, list2->value) < 0) {
+    if (strnatcmp(list1->value, list2->value) < 0) {
         result = list1;
         list1 = list1->next;
     } else {
@@ -174,7 +174,7 @@ list_ele_t *merge(list_ele_t *list1, list_ele_t *list2)
 
     // merge value of list nodes until one's end
     while (list1 && list2) {
-        if (strnatcasecmp(list1->value, list2->value) < 0) {
+        if (strnatcmp(list1->value, list2->value) < 0) {
             current->next = list1;
             list1 = list1->next;
         } else {

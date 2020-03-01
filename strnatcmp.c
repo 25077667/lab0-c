@@ -160,14 +160,14 @@ static int strnatcmp0(nat_char const *a, nat_char const *b, int fold_case)
 }
 
 
-/* int strnatcmp(nat_char const *a, nat_char const *b)
+int strnatcmp(nat_char const *a, nat_char const *b)
 {
     return strnatcmp0(a, b, 0);
-}*/
+}
 
 
 /* Compare, recognizing numeric string and ignoring case. */
-int strnatcasecmp(nat_char const *a, nat_char const *b)
+/*int strnatcasecmp(nat_char const *a, nat_char const *b)
 {
     return strnatcmp0(a, b, 1);
-}
+}*/
